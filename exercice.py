@@ -21,7 +21,7 @@ def modifier_statut_todo():
     if todos[index]['statut'] == "A faire":
         todos[index]['statut'] = "Fait"
     else:
-        todos[index]['statut'] = "A fair"  
+        todos[index]['statut'] = "A faire"  
     print(f"Statut de la tâche '{todos[index]['titre']}' modifié.")
 
 print ("=======MENU PRINCIPAL=======")
