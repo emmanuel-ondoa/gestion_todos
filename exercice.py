@@ -1,6 +1,5 @@
 todos= []
 
-
 def creer_todos () :
     titre =input("inserer le nom de la tache :")
     todos.append ({"titre": titre ,"statut" : "A faire"})
@@ -21,23 +20,34 @@ def modifier_statut_todo():
     if todos[index]['statut'] == "A faire":
         todos[index]['statut'] = "Fait"
     else:
-        todos[index]['statut'] = "A faire"  
+        todos[index]['statut'] = "A faire" 
     print(f"Statut de la tâche '{todos[index]['titre']}' modifié.")
+
+def supprimer_todo():
+      if not todos:
+        print("Aucune tâche disponible.")
+      else:
+        lister_todos()
+        index = int(input("Entrez le numéro de la tâche à supprimer : ")) - 1
+        del todos[index]
+        print("Tâche supprimée avec succès.") 
 
 print ("=======MENU PRINCIPAL=======")
 print ("1.creer un todo")
 print("2.liste des todos")
 print("3.modifier le statut d un todo ")
-print("4. quitter")
+print("4.supprimer un todo ")
+print("5. quitter")
 choix = int(input())
-while choix != 4:
+while choix != 5:
   if choix==1:
       creer_todos()
       print ("=======MENU PRINCIPAL=======")
       print ("1.creer un todo")
       print("2.liste des todos")
       print("3.modifier le statut d un todo")
-      print("4: quitter")
+      print("4.supprimer un todo ")
+      print("5: quitter")
       choix = int(input())
   elif choix==2:
       lister_todos()
@@ -45,13 +55,24 @@ while choix != 4:
       print ("1.creer un todo")
       print("2.liste des todos")
       print("3.modifier le statut d un todo")
-      print("4: quitter")
+      print("4.supprimer un todo ")
+      print("5: quitter")
       choix = int(input())
-  else:
+  elif choix==3:    
       modifier_statut_todo()
       print ("=======MENU PRINCIPAL=======")
       print ("1.creer un todo")
       print("2.liste des todos")
       print("3.modifier le statut d un todo")
-      print("4: quitter")
+      print("4.supprimer un todo ")
+      print("5: quitter")
       choix = int(input())
+  elif choix==4: 
+    supprimer_todo() 
+    print ("=======MENU PRINCIPAL=======")
+    print ("1.creer un todo")
+    print("2.liste des todos")
+    print("3.modifier le statut d un todo")
+    print("4.supprimer un todo ")
+    print("5: quitter")
+    choix = int(input())
