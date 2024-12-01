@@ -24,55 +24,30 @@ def modifier_statut_todo():
     print(f"Statut de la tâche '{todos[index]['titre']}' modifié.")
 
 def supprimer_todo():
-      if not todos:
-        print("Aucune tâche disponible.")
-      else:
-        lister_todos()
-        index = int(input("Entrez le numéro de la tâche à supprimer : ")) - 1
+    lister_todos()
+    index = int(input("Entrez le numéro de la tâche à supprimer : ")) - 1
+    confirmation = input(f"Confirmez-vous la suppression de '{todos[index]['titre']}' ? (o/n) : ")
+    if confirmation.lower() == 'o':
         del todos[index]
-        print("Tâche supprimée avec succès.") 
+        print("Tâche supprimée avec succès.")
+    else:
+        print("Suppression annulée.")
 
-print ("=======MENU PRINCIPAL=======")
-print ("1.creer un todo")
-print("2.liste des todos")
-print("3.modifier le statut d un todo ")
-print("4.supprimer un todo ")
-print("5. quitter")
-choix = int(input())
-while choix != 5:
-  if choix==1:
-      creer_todos()
-      print ("=======MENU PRINCIPAL=======")
-      print ("1.creer un todo")
-      print("2.liste des todos")
-      print("3.modifier le statut d un todo")
-      print("4.supprimer un todo ")
-      print("5: quitter")
-      choix = int(input())
-  elif choix==2:
-      lister_todos()
-      print ("=======MENU PRINCIPAL=======")
-      print ("1.creer un todo")
-      print("2.liste des todos")
-      print("3.modifier le statut d un todo")
-      print("4.supprimer un todo ")
-      print("5: quitter")
-      choix = int(input())
-  elif choix==3:    
-      modifier_statut_todo()
-      print ("=======MENU PRINCIPAL=======")
-      print ("1.creer un todo")
-      print("2.liste des todos")
-      print("3.modifier le statut d un todo")
-      print("4.supprimer un todo ")
-      print("5: quitter")
-      choix = int(input())
-  elif choix==4: 
-    supprimer_todo() 
-    print ("=======MENU PRINCIPAL=======")
-    print ("1.creer un todo")
-    print("2.liste des todos")
-    print("3.modifier le statut d un todo")
-    print("4.supprimer un todo ")
-    print("5: quitter")
-    choix = int(input())
+        
+
+choix = ''
+while choix != 'q':
+    print('\n==== Menu principal ====')
+    print('1: Lister les todos')
+    print('2: Créer un todo')
+    print('3:modifier le statut d un todo ')
+    print ('4:supprimer un todo')
+    print('q: Quitter')
+    choix = input('=> Choix : ')
+    match choix:
+        case '1': lister_todos()
+        case '2': creer_todos()
+        case '3' : modifier_statut_todo()
+        case '4': supprimer_todo()
+        case 'q': print('Au revoir')
+        case _: print('Choix invalide')
